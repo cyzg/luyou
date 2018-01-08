@@ -14,15 +14,14 @@ void Print(Router<T> &G)
 	int n = G.NumberOfVertices();
 	int  *path = new int[n];
 	int  *dist = new int[n];
-	int i;
 	cout << "顶点个数为:" << G.NumberOfVertices() << endl;
 	cout << "边的条数为:" << G.NunberOfEdges() << endl;
 	cout << "结点集合为:";
-	for (i = 0; i< G.NumberOfVertices(); i++)
+	for (int i = 0; i< G.NumberOfVertices(); i++)
 		cout << " R" << G.getValue(i);
 	cout << endl;
 	G.ShortestPath(v, dist, path);
-	for (i = 0; i < G.NumberOfVertices(); i++)
+	for (int i = 0; i < G.NumberOfVertices(); i++)
 	{
 		if (i != v)
 			cout << " 目的路由器 ： R" << G.getValue(i) << "      下一跳 ：R" << G.getValue(path[i]) << endl;
