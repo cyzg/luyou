@@ -42,9 +42,9 @@ public:
 	int NumberOfVertices() { return numVertices; }		//返回当前顶点数
 	int NunberOfEdges() { return numEdges; }			//返回当前边数
 	bool insertVertex(const T vertex);			//插入一个顶点vertex	
-	bool removeVertex(T v);//删去顶点v和所有与v相关的边
+	bool removeVertex(int v);//删去顶点v和所有与v相关的边
 	bool insertEdge(int v1, int v2, int cost);//插入边(v1,v2),权为cost
-	bool removeEdge(T v1, T v2);//删去边(v1,v2)
+	bool removeEdge(int v1, int v2);//删去边(v1,v2)
 	void ShortestPath(int v, int *dist, int *path);//找下一跳
 	int getVertexPos(const T vertex)
 	{
@@ -124,9 +124,8 @@ bool Router<T>::insertVertex(const T vertex)
 	return true;
 }
 template<class T>
-bool Router<T>::removeVertex(T x)
+bool Router<T>::removeVertex(int v)
 {
-	int v = getVertexPos(x);
 	if (numVertices == 1 || v<0 || v >= numVertices)return false;
 	Edge<T> *p, *s, *t;
 	int k;
@@ -198,10 +197,8 @@ bool Router<T>::insertEdge(int v1, int v2, int cost)
 	return false;
 }
 template<class T>
-bool Router<T>::removeEdge(T x1, T x2)
+bool Router<T>::removeEdge(int v1, int v2)
 {
-	int v1 = getVertexPos(x1);
-	int v2 = getVertexPos(x2);
 	if (v1 >= 0 && v1 < numVertices && v2 >= 0 && v2 < numVertices && v1 != v2)
 	{
 		Edge<T> *p = NodeTable[v1].adj, *q = NULL, *s = p;
