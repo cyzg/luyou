@@ -240,6 +240,8 @@ bool Router<T>::removeEdge(int v1, int v2)
 	}
 	return false;
 }
+
+
 template<class T>
 void Router<T>::ShortestPath(int v, int *dist, int *path)
 {
