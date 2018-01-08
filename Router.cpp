@@ -7,8 +7,16 @@ using namespace std;
 const int MaxVertices = 100;
 
 template<class T>
-void Print(Router<T> &G, int v)
+void Print(Router<T> &G)
 {
+	int  vv;
+	cout << "请输入路由器" << endl;
+	cin >> vv;
+	int v = G.getVertexPos(vv);
+	if(v==-1){
+		cerr<<"不存在此路由器"<<endl;
+		return; 
+	}
 	int n = G.NumberOfVertices();
 	int  *path = new int[n];
 	int  *dist = new int[n];
@@ -26,26 +34,30 @@ void Print(Router<T> &G, int v)
 	}
 }
 template<class T>
-void Remove(Router<T> &G)
+void RemoveV(Router<T> &G)
 {
-	cout << "  删除顶点-1，删除边-2   :";
-	int i;
-	cin >> i;
-	if (i == 1) {
-		cout << endl << "输入删除的顶点（即路由器序号）：";
-		int v;
-		cin >> v;
-		if (G.removeVertex(G.getVertexPos(v)))
-			return;
+	cout << endl << "输入删除的顶点（即路由器序号）：";
+	int v;
+	cin >> v;
+	if (G.removeVertex(G.getVertexPos(v))==true){
+		cout<<"删除成功!" <<endl;
+		return;
+	}
+	else cerr<<"删除失败!"<<endl ;
+}
+template<class T>
+void RemoveE(Router<T> &G)
+{
+	cout << endl << "输入删除的边（即哪两个路由器序号，用空格分开）：";
+	int v1, v2;
+	cin >> v1 >> v2;
+	if (G.removeEdge(G.getVertexPos(v1), G.getVertexPos(v2))==true){
+		cout<<"删除成功!" <<endl;
+		return;
 	}
 	else {
-		cout << endl << "输入删除的边（即哪两个路由器序号，用空格分开）：";
-		int v1, v2;
-		cin >> v1 >> v2;
-		if (G.removeEdge(G.getVertexPos(v1), G.getVertexPos(v2)))
-			return;
+	cerr<<"删除失败!"<<endl ;
 	}
-
 }
 
 
@@ -70,13 +82,24 @@ int main() {
 	}
 	fin2.clear();
 	fin2.close();
-	int  vv;
-	cout << "请输入路由器" << endl;
-	cin >> vv;
-	int pos = g1.getVertexPos(vv);
-	Print(g1, pos);
-	Remove(g1);
-	Print(g1, pos);
+	while(1){
+		cout<<" 1.生成指定路由器号的路由表"<<endl;
+		cout<<" 2.删除顶点" <<endl;
+		cout<<" 3.删除边" <<endl; 
+		cout<<" 4.退出"<<endl;
+		cout<<"请输入选择的序号："; 
+		int i;
+		cin>>i; 
+		if (i==1)
+			Print(g1);
+		else if(i==2)
+			RemoveV(g1);
+		else if(i==3)
+			RemoveE(g1);
+		else break;
+		system("pause");
+	}
+
 	return 0;
 }
 
