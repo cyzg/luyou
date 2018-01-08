@@ -77,7 +77,7 @@ int main() {
 	Print(g1, pos);
 	Remove(g1);
 	Print(g1, pos);
-	system("pause"); 
+	return 0;
 }
 
 
