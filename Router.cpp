@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <iomanip>
-#include   <fstream>
+#include <fstream>
 #include"removeE.cpp"
 #include"removeV.cpp"
 #include"print.cpp"
