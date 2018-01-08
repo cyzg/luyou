@@ -248,7 +248,8 @@ void Router<T>::ShortestPath(int v, int *dist, int *path)
 	int n = numVertices;
 	bool *S = new bool[n];          //最短路径定点集
 	int w, min;
-	for (int i = 0; i<n; i++)
+	int i;
+	for ( i = 0; i<n; i++)
 	{
 		dist[i] = getWeight(v, i);   //数组初始化
 		S[i] = false;
@@ -257,7 +258,7 @@ void Router<T>::ShortestPath(int v, int *dist, int *path)
 		else path[i] = -1;
 	}
 	S[v] = true; dist[v] = 0;           //顶点v加入顶点集合 
-	for (int i = 0; i<n - 1; i++)
+	for (i = 0; i<n - 1; i++)
 	{
 		min = maxWeight; int u = v;      //选不在S中具有最短路径的顶点u（选出最短的那个 
 		for (int j = 0; j<n; j++)
