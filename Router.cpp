@@ -57,6 +57,8 @@ int main() {
 		fin1 >> v;
 		g1.insertVertex(v);
 	}
+	fin1.clear();
+	fin1.close();
 	ifstream fin2("D:\\edge.txt");
 	int v1, v2, e;
 	while (!fin2.eof())
@@ -66,8 +68,8 @@ int main() {
 		fin2 >> e;
 		g1.insertEdge(v1, v2, e);
 	}
+	fin2.clear();
 	fin2.close();
-	fin1.close();
 	int  vv;
 	cout << "ÇëÊäÈëÂ·ÓÉÆ÷" << endl;
 	cin >> vv;
@@ -76,7 +78,6 @@ int main() {
 	Remove(g1);
 	Print(g1, pos);
 	system("pause"); 
-	return 0;
 }
 
 
