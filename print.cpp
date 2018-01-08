@@ -2,6 +2,7 @@
 template<class T>
 void Print(Router<T> &G)
 {
+	cout << "ylq" << endl;
 	int  vv;
 	cout << "请输入路由器" << endl;
 	cin >> vv;
@@ -25,4 +26,5 @@ void Print(Router<T> &G)
 		if (i != v)
 			cout << " 目的路由器 ： R" << G.getValue(i) << "      下一跳 ：R" << G.getValue(path[i]) << endl;
 	}
+	
 }
